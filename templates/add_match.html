@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add Match</h1>
+    <form id="addMatchForm">
+        <label for="whitePlayer">White Player:</label>
+        <select id="whitePlayer" name="white_player_id"></select>
+        <br>
+        <label for="blackPlayer">Black Player:</label>
+        <select id="blackPlayer" name="black_player_id"></select>
+        <br>
+        <label for="result">Result:</label>
+        <input type="text" id="result" name="result">
+        <br>
+        <label for="gameLink">Game Link:</label>
+        <input type="text" id="gameLink" name="game_link">
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <label for="resultInfo">Result Info:</label>
+        <textarea id="resultInfo" name="result_info"></textarea>
+        <br>
+        <button type="submit">Add Match</button>
+    </form>
+    <script src="/static/js/add_match.js"></script>
+{% endblock %}

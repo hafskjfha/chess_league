@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Player vs Player Statistics</h1>
+    <div id="playerVsPlayerStats">
+        <!-- 두 선수의 비교 결과가 여기에 동적으로 로드됩니다. -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const player1Id = urlParams.get('player1_id');
+            const player2Id = urlParams.get('player2_id');
+
+            fetch(`/api/player_vs_player?player1_id=${player1Id}&player2_id=${player2Id}`)
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('playerVsPlayerStats');
+                    container.innerHTML = `
+                        <h3>${data.player1.name} vs ${data.player2.name}</h3>
+                        <h4>${data.player1.name} Statistics</h4>
+                        <p>Total Games: ${data.player1.total_games}</p>
+                        <p>Wins: ${data.player1.wins} (${data.player1.win_rate.toFixed(2)}%)</p>
+                        <p>Draws: ${data.player1.draws} (${data.player1.draw_rate.toFixed(2)}%)</p>
+                        <p>Losses: ${data.player1.losses} (${data.player1.losses_rate.toFixed(2)}%)</p>
+                        <h4>${data.player2.name} Statistics</h4>
+                        <p>Total Games: ${data.player2.total_games}</p>
+                        <p>Wins: ${data.player2.wins} (${data.player2.win_rate.toFixed(2)}%)</p>
+                        <p>Draws: ${data.player2.draws} (${data.player2.draw_rate.toFixed(2)}%)</p>
+                        <p>Losses: ${data.player2.losses} (${data.player2.losses_rate.toFixed(2)}%)</p>
+                        <h4>${data.player1.name} as White</h4>
+                        <p>Wins: ${data.player1_as_white.wins} (${data.player1_as_white.win_rate.toFixed(2)}%)</p>
+                        <p>Draws: ${data.player1_as_white.draws} (${data.player1_as_white.draw_rate.toFixed(2)}%)</p>
+                        <p>Losses: ${data.player1_as_white.losses} (${data.player1_as_white.losses_rate.toFixed(2)}%)</p>
+                        <h4>${data.player2.name} as White</h4>
+                        <p>Wins: ${data.player2_as_white.wins} (${data.player2_as_white.win_rate.toFixed(2)}%)</p>
+                        <p>Draws: ${data.player2_as_white.draws} (${data.player2_as_white.draw_rate.toFixed(2)}%)</p>
+                        <p>Losses: ${data.player2_as_white.losses} (${data.player2_as_white.losses_rate.toFixed(2)}%)</p>
+                    `;
+                });
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Player Detail</h1>
+    <h2 id="playerName"></h2>
+    <p>Wins: <span id="playerWins"></span></p>
+    <p>Draws: <span id="playerDraws"></span></p>
+    <p>Losses: <span id="playerLosses"></span></p>
+    <h3>Recent Matches</h3>
+    <ul id="recentMatches"></ul>
+    <script src="/static/js/player_detail.js"></script>
+{% endblock %}

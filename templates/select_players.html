@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Select Players for Comparison</h1>
+    <form id="selectPlayersForm" method="post" action="/player_vs_player">
+        <label for="player1">Select Player 1:</label>
+        <select id="player1" name="player1">
+            <!-- 선수 목록이 동적으로 로드됩니다 -->
+        </select>
+
+        <label for="player2">Select Player 2:</label>
+        <select id="player2" name="player2">
+            <!-- 선수 목록이 동적으로 로드됩니다 -->
+        </select>
+
+        <button type="submit">Compare Players</button>
+    </form>
+
+    <script src="/static/js/select_players.js"></script>
+{% endblock %}
